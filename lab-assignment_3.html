@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartWorld Mobile Shop</title>
+    <style>
+      :root {
+        --primary-blue: #385170;
+        --secondary-blue: #9fd3c7;
+        --dark-blue: #142d4c;
+        --bg-color: #ececec;
+        --text-color: #2e2e2e;
+        --card-bg: #ffffff;
+      }
+
+      .dark-theme {
+        --bg-color: #121212;
+        --text-color: #eaeaea;
+        --card-bg: #1e1e1e;
+        --primary-blue: #9fd3c7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background: var(--bg-color);
+        color: var(--text-color);
+        transition: background 0.3s, color 0.3s;
+      }
+
+      header {
+        background: linear-gradient(90deg, #385170, #142d4c);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+
+      #theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 8px 15px;
+        cursor: pointer;
+        border-radius: 20px;
+        border: none;
+        background: var(--dark-blue);
+        color: white;
+      }
+
+      nav {
+        background: var(--dark-blue);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        display: block;
+        transition: background 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        background: var(--secondary-blue);
+      }
+
+      section {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1000px;
+        background: var(--card-bg);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--primary-blue);
+        display: inline-block;
+      }
+
+      #searchBar {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+      }
+
+      th {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .buy-btn {
+        background: var(--secondary-blue);
+        color: #142d4c;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+      }
+
+      .buy-btn:hover {
+        background: #385170;
+        color: white;
+      }
+
+      #offers p {
+        background: #9fd3c7;
+        color: #142d4c;
+        padding: 10px;
+        border-left: 5px solid var(--primary-blue);
+        margin-bottom: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form input,
+      form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: var(--card-bg);
+        color: var(--text-color);
+      }
+
+      form input[type="submit"] {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        background: var(--dark-blue);
+        color: white;
+        padding: 15px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button id="theme-toggle">Change Mode 🌓</button>
+      <h1>SmartWorld Mobile Shop</h1>
+      <p>Items in Cart: <span id="cart-count">0</span></p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#offers">Offers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="about">
+      <h2>About Our Shop</h2>
+      <p>
+        Located in Bhilai, we provide the latest smartphones and accessories.
+      </p>
+      <p id="opening-status" style="font-weight: bold; margin-top: 10px"></p>
+    </section>
+
+    <section id="products">
+      <h2>Available Products</h2>
+      <input
+        type="text"
+        id="searchBar"
+        placeholder="Search for a mobile model (e.g., iPhone)..."
+      />
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Features</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OnePlus 15R</td>
+            <td>₹35,000</td>
+            <td>8GB RAM, 128GB Storage</td>
+            <td><button class="buy-btn">Add to Cart</button></td>
+          </tr>
+          <tr>
+            <td>Samsung Galaxy A56</td>
+            <td>₹28,000</td>
+            <td>6GB RAM, 128GB Storage</td>
+            <td><button class="buy-btn">Add to Cart</button></td>
+          </tr>
+          <tr>
+            <td>iPhone 16 Pro Max</td>
+            <td>₹1,25,000</td>
+            <td>256GB Storage, A18 Chip</td>
+            <td><button class="buy-btn">Add to Cart</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="offers">
+      <h2>Special Offers</h2>
+      <p>Flat 5% off on all accessories this month!</p>
+      <p>Exchange your old phone & get instant discount.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <input type="submit" value="Send Message" />
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2025 SmartWorld Mobile Shop | Bhilai</p>
+    </footer>
+
+    <script>
+      const themeBtn = document.getElementById("theme-toggle");
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+      });
+
+      const searchBar = document.getElementById("searchBar");
+      searchBar.addEventListener("keyup", () => {
+        const searchText = searchBar.value.toLowerCase();
+        const rows = document.querySelectorAll("#productTable tbody tr");
+
+        rows.forEach((row) => {
+          const modelName = row.cells[0].textContent.toLowerCase();
+          row.style.display = modelName.includes(searchText) ? "" : "none";
+        });
+      });
+
+      let count = 0;
+      const cartDisplay = document.getElementById("cart-count");
+      const buyButtons = document.querySelectorAll(".buy-btn");
+
+      buyButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          count++;
+          cartDisplay.textContent = count;
+          this.textContent = "Added!";
+          this.style.background = "#555";
+          this.disabled = true;
+        });
+      });
+
+      const contactForm = document.getElementById("contactForm");
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+
+        if (name.length < 3) {
+          alert("Please enter a valid name.");
+        } else {
+          alert(`Thank you, ${name}! Your inquiry has been sent.`);
+          contactForm.reset();
+        }
+      });
+
+      function checkShopStatus() {
+        const hour = new Date().getHours();
+        const statusEl = document.getElementById("opening-status");
+
+        if (hour >= 10 && hour < 21) {
+          statusEl.textContent = "● We are currently OPEN. Visit us now!";
+          statusEl.style.color = "green";
+        } else {
+          statusEl.textContent = "○ We are currently CLOSED. Opens at 10 AM.";
+          statusEl.style.color = "red";
+        }
+      }
+      checkShopStatus();
+    </script>
+  </body>
+</html>

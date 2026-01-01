@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SmartWorld Mobile Shop</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background: #ececec;
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(90deg, #385170, #142d4c);
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      nav {
+        background: #142d4c;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        transition: background 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        background: #9fd3c7;
+        border-radius: 5px;
+      }
+
+      section {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1000px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #385170;
+        margin-bottom: 15px;
+      }
+
+      #products table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #products th,
+      #products td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+      }
+
+      #products th {
+        background: #385170;
+        color: white;
+      }
+
+      #products tr:nth-child(even) {
+        background: #f1f1f1;
+      }
+
+      #offers p {
+        background: #9fd3c7;
+        padding: 10px;
+        border-left: 5px solid #385170;
+        margin-bottom: 10px;
+      }
+
+      video,
+      iframe {
+        display: block;
+        margin: 0 auto;
+        border: 3px solid #385170;
+        border-radius: 10px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form label {
+        margin: 5px 0;
+        font-weight: bold;
+      }
+
+      form input,
+      form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      form input[type="submit"] {
+        background: #385170;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      form input[type="submit"]:hover {
+        background: #9fd3c7;
+        color: #142d4c;
+      }
+
+      footer {
+        text-align: center;
+        background: #142d4c;
+        color: white;
+        padding: 15px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+        }
+
+        #products table,
+        #products th,
+        #products td {
+          font-size: 0.9rem;
+        }
+
+        header h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SmartWorld Mobile Shop</h1>
+      <p>Your one-stop destination for smartphones & accessories</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#offers">Special Offers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="about">
+      <h2>About Our Shop</h2>
+      <p>
+        Located in Bhilai, we provide the latest smartphones, tablets, and
+        accessories at affordable prices.
+      </p>
+      <ul>
+        <li>Open: 10 AM - 9 PM</li>
+        <li>Address: Near Rungta Market, Bhilai</li>
+        <li>Contact: +91-9876543210</li>
+      </ul>
+    </section>
+
+    <section id="products">
+      <h2>Available Products</h2>
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>Price</th>
+          <th>Features</th>
+        </tr>
+        <tr>
+          <td>OnePlus 15R</td>
+          <td>₹35,000</td>
+          <td>8GB RAM, 128GB Storage</td>
+        </tr>
+        <tr>
+          <td>Samsung Galaxy A56</td>
+          <td>₹28,000</td>
+          <td>6GB RAM, 128GB Storage</td>
+        </tr>
+        <tr>
+          <td>iPhone 16 Pro Max</td>
+          <td>₹1,25,000</td>
+          <td>256GB Storage, A18 Chip</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="offers">
+      <h2>Special Offers</h2>
+      <p>Flat 5% off on all accessories this month!</p>
+      <p>Exchange your old phone & get instant discount.</p>
+    </section>
+
+    <section>
+      <h2>Shop Tour</h2>
+      <video width="400" controls>
+        <source src="shop-tour.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section>
+      <h2>Find Us on Map</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?...your-shop-location..."
+        width="400"
+        height="300"
+        style="border: 0"
+        allowfullscreen
+      ></iframe>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <input type="submit" value="Send" />
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 SmartWorld Mobile Shop | All Rights Reserved</p>
+    </footer>
+  </body>
+</html>
